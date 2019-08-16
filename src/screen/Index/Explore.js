@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import { View, StyleSheet, TouchableHighlight, Text, FlatList, ScrollView, StatusBar } from 'react-native';
-import { Appbar, Button } from 'react-native-paper';
+import React, { Component } from 'react'
+import { View, StyleSheet, TouchableHighlight, Text, FlatList, ScrollView, StatusBar } from 'react-native'
+import { Appbar, Button } from 'react-native-paper'
 import { Card } from 'react-native-elements'
+import Slideshow from 'react-native-slideshow'
 
 const data = [
     {
@@ -58,36 +59,36 @@ class Index extends Component {
         super(props);
 
         this.state = {
-            // position: 1,
-            // interval: null,
-            // dataSource: [
-            //     {
-            //         url: 'https://mamikos.com/uploads/cache/data/user/2019-01-28/I9kswUvH-360x480.jpg',
-            //     }, {
-            //         url: 'https://static.mamikos.com/uploads/cache/data/user/2019-08-02/T71F3KDd-360x480.jpg',
-            //     }, {
-            //         url: 'https://mamikos.com/uploads/cache/data/user/2019-02-06/tYYKBgjd-360x480.jpg',
-            //     }, {
-            //         url: 'https://static.mamikos.com/uploads/cache/data/user/2019-07-31/z2algAvh-360x480.jpg',
-            //     }
-            // ],
+            position: 1,
+            interval: null,
+            dataSource: [
+                {
+                    url: 'https://mamikos.com/uploads/cache/data/user/2019-01-28/I9kswUvH-360x480.jpg',
+                }, {
+                    url: 'https://static.mamikos.com/uploads/cache/data/user/2019-08-02/T71F3KDd-360x480.jpg',
+                }, {
+                    url: 'https://mamikos.com/uploads/cache/data/user/2019-02-06/tYYKBgjd-360x480.jpg',
+                }, {
+                    url: 'https://static.mamikos.com/uploads/cache/data/user/2019-07-31/z2algAvh-360x480.jpg',
+                }
+            ],
             data: data
         };
     }
 
-    // componentWillMount() {
-    //     this.setState({
-    //         interval: setInterval(() => {
-    //             this.setState({
-    //                 position: this.state.position === this.state.dataSource.length ? 0 : this.state.position + 1
-    //             });
-    //         }, 5000)
-    //     });
-    // }
+    componentWillMount() {
+        this.setState({
+            interval: setInterval(() => {
+                this.setState({
+                    position: this.state.position === this.state.dataSource.length ? 0 : this.state.position + 1
+                });
+            }, 5000)
+        });
+    }
 
-    // componentWillUnmount() {
-    //     clearInterval(this.state.interval);
-    // }
+    componentWillUnmount() {
+        clearInterval(this.state.interval);
+    }
 
     render() {
         return (
@@ -108,7 +109,7 @@ class Index extends Component {
                     <View style={styles.line} />
                     <View style={styles.body}>
                         <Text style={{ fontWeight: 'bold', fontSize: 15, color: 'black', marginBottom: 5, marginTop: 10 }}>Promo</Text>
-                        {/* <Slideshow
+                        <Slideshow
                             dataSource={this.state.dataSource}
                             position={this.state.position}
                             onPositionChanged={position => this.setState({ position })}
@@ -116,7 +117,7 @@ class Index extends Component {
                             height={150}
 
                             style={styles.slideshow}
-                        /> */}
+                        />
                         <View style={{ padding: 5, borderRadius: 5, backgroundColor: '#16a085', height: 50, marginTop: 10 }}>
                             <View>
                                 <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 13 }}>Anda Pemilik Kost ?</Text>

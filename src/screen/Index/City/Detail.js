@@ -2,11 +2,59 @@ import React, { Component } from 'react';
 import { View, Text, Image, ScrollView, StyleSheet, StatusBar, TouchableOpacity } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { Appbar } from 'react-native-paper';
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+
 
 export default class Detail extends Component {
+    constructor() {
+        super()
+        this.state = {
+            isPhoto: true
+        }
+    }
+
+    changeToPhoto(isPhoto) {
+        if (isPhoto) {
+            return (
+                <Image source={{ uri: 'https://www.simplyhomy.com/wp-content/uploads/2018/08/bisnis-kos-kosan.jpg' }} style={{ height: 230 }} />
+            )
+        } else {
+            return (
+                <View style={{
+                    ...StyleSheet.absoluteFillObject,
+                    height: 230,
+                }}>
+                    <MapView
+                        provider={PROVIDER_GOOGLE}
+                        style={{ ...StyleSheet.absoluteFillObject }}
+                        region={{
+                            latitude: -7.275973,
+                            longitude: 112.808304,
+                            latitudeDelta: 0.09,
+                            longitudeDelta: 0.09,
+                        }}
+                    >
+                        <MapView.Marker
+                            coordinate={{
+                                latitude: -7.275973,
+                                longitude: 112.808304
+                            }}
+                            title='asd'
+                        />
+                    </MapView>
+                </View>
+            )
+        }
+    }
+
+    changeStatePhoto(param) {
+        this.setState({
+            isPhoto: param
+        })
+    }
     render() {
         const { params } = this.props.navigation.state;
-        const { name, cover, address, type, place, price } = params
+        const { name, address, type, place, price } = params
         return (
             <View>
                 <StatusBar
@@ -15,13 +63,15 @@ export default class Detail extends Component {
                 />
                 <ScrollView showsVerticalScrollIndicator={false}>
                     <View style={{ flex: 1 }}>
-                        <Image source={{ uri: cover }} style={{ height: 230 }} />
+                        <View style={{ height: 230 }}>
+                            {this.changeToPhoto(this.state.isPhoto)}
+                        </View>
                         <View style={styles.line}>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={() => this.changeStatePhoto(true)}>
                                 <Icon name='photo-library' />
                                 <Text>Foto</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity >
+                            <TouchableOpacity onPress={() => this.changeStatePhoto(false)}>
                                 <Icon name='map' />
                                 <Text>Peta</Text>
                             </TouchableOpacity>
@@ -117,12 +167,10 @@ Detail.navigationOptions = {
 
 const styles = StyleSheet.create({
     line: {
-        paddingLeft: 70,
-        paddingRight: 70,
         backgroundColor: '#f2f0f0',
         height: 50,
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'space-evenly',
         alignItems: 'center',
         alignContent: 'center'
     }
