@@ -5,11 +5,11 @@ import Icons from 'react-native-vector-icons/Ionicons'
 
 import routes from './src/screen/Index/lib/routes'
 import WishList from './src/screen/WishList/WishList'
+import Account from './src/screen/Account/lib/routes'
 
 YellowBox.ignoreWarnings(['ViewPagerAndroid']);
 const Chat = () => <Text>Chat</Text>;
 
-const Login = () => <Text>Login</Text>;
 
 class App extends Component {
   state = {
@@ -18,7 +18,7 @@ class App extends Component {
       { key: 'index', title: 'Index', icon: 'search' },
       { key: 'wishlist', title: 'WishList', icon: 'favorite-border' },
       { key: 'chat', title: 'Chat', icon: 'chat-bubble-outline' },
-      { key: 'login', title: 'Login', icon: 'person' }
+      { key: 'account', title: 'Account', icon: 'person' }
     ],
   };
 
@@ -28,7 +28,7 @@ class App extends Component {
     index: routes,
     wishlist: WishList,
     chat: Chat,
-    login: Login
+    account: Account
   });
 
   render() {

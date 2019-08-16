@@ -6,6 +6,10 @@ export default class MyComponent extends Component {
 
     _onSearch = () => console.log('Searching');
 
+    static navigationOptions = {
+        header: null
+    }
+
     render() {
         return (
             <Appbar.Header>

@@ -12,6 +12,7 @@ const houses = [
         address: "Jalan Kaurangan no 23 Jurangmangu",
         price: 300000,
         place: 'Bandung',
+        type: 'Putri',
         longitude: -6.28129,
         latitude: 106.731233,
         cover:
@@ -22,6 +23,7 @@ const houses = [
         address: "Jalan Dealova no 34 Sawah Lama",
         price: 240000,
         place: 'Semarang',
+        type: 'Putri',
         longitude: -6.28392,
         latitude: 106.723822,
         cover:
@@ -32,6 +34,7 @@ const houses = [
         address: "Jalan Ciater Raya no 11 Ciater Raya",
         price: 120000,
         place: 'Jakarta',
+        type: 'Putra',
         longitude: -6.28229,
         latitude: 106.722812,
         cover:
@@ -42,6 +45,7 @@ const houses = [
         address: "Jalan Descute no 65 Ciater Raya",
         price: 290000,
         place: 'Surabaya',
+        type: 'Campur',
         longitude: -6.27713,
         latitude: 106.739182,
         cover:
@@ -52,6 +56,7 @@ const houses = [
         address: "Rawabuntu Cicentang RT. 5 RW. 5",
         price: 190000,
         place: 'Yogyakarta',
+        type: 'Putra',
         longitude: -6.287666,
         latitude: 106.74031,
         cover:
@@ -62,6 +67,7 @@ const houses = [
         address: "Jalan Ciledug no 76 Ciledug Tangerang",
         price: 143000,
         place: 'Denpasar',
+        type: 'Campur',
         longitude: -6.282206,
         latitude: 106.727602,
         cover:
@@ -88,13 +94,18 @@ export default class List extends Component {
                             <View style={styles.container}>
                                 <TouchableHighlight underlayColor='white' onPress={() => this.props.navigation.navigate('Detail', {
                                     name: rowData.name,
+                                    cover: rowData.cover,
+                                    type: rowData.type,
+                                    price: rowData.price,
+                                    place: rowData.place,
+                                    address: rowData.address
                                 })}>
                                     <Card
                                         image={{ uri: rowData.cover }}
                                     >
                                         <Text style={{ marginLeft: 5, fontWeight: 'bold', fontSize: 20 }}>{rowData.name}</Text>
-                                        <View style={{ flexDirection: 'row', justifyContent: 'flex-start' }}>
-                                            <Text style={{ color: 'red', marginLeft: 5 }}>2 Person</Text>
+                                        <View style={{ flexDirection: 'row', justifyContent: 'flex-start', marginTop: 5 }}>
+                                            <Text style={{ color: 'red', marginLeft: 5 }}>{rowData.type}</Text>
                                             <Text style={styles.textHEader}>{rowData.place}</Text>
                                         </View>
                                         <View style={{ marginLeft: 5, marginTop: 5 }}>

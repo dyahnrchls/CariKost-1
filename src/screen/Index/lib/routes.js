@@ -9,6 +9,30 @@ import Detail from '../City/Detail'
 import List from '../City/List'
 import Map from '../City/Map'
 
+
+const AppTabNav = createMaterialTopTabNavigator(
+    {
+        Map: Map,
+        List: List,
+    },
+    {
+        tabBarOptions: {
+            activeTintColor: '#00a663',
+            inactiveTintColor: 'silver',
+            labelStyle: {
+                fontWeight: 'bold',
+                fontSize: 13
+            },
+            showLabel: true,
+            style: {
+                backgroundColor: 'white'
+            }, indicatorStyle: {
+                backgroundColor: '#00a663'
+            }
+        },
+    }
+)
+
 const AppNavigator = createStackNavigator({
     Explore: {
         screen: Explore
@@ -17,38 +41,25 @@ const AppNavigator = createStackNavigator({
     }, WishList: {
         screen: WishList
     }, City: {
-        screen: createMaterialTopTabNavigator({
-            Map: {
-                screen: Map
-            }, List: {
-                screen: List
+        screen: AppTabNav,
+        navigationOptions: {
+            headerStyle: {
+                elevation: 0,
+                shadowOpacity: 0
             }
-        },
-            {
-                tabBarOptions: {
-                    activeTintColor: '#00a663',
-                    inactiveTintColor: 'silver',
-                    labelStyle: {
-                        fontWeight: 'bold',
-                        fontSize: 13
-                    },
-                    showLabel: true,
-                    style: {
-                        backgroundColor: 'white'
-                    }, indicatorStyle: {
-                        backgroundColor: '#00a663'
-                    }
-                },
-            })
+        }
     }, Detail: {
-        screen: Detail
+        screen: Detail,
+        navigationOptions: {
+            headerStyle: {
+                backgroundColor: '#00a663'
+            },
+            headerTintColor: 'white'
+        }
     }
 }, {
         initialRouteName: 'Explore',
-        headerMode: 'none',
-        navigationOptions: {
-            headerVisible: false,
-        }
+
     });
 
 const AppNavigatorr = createAppContainer(AppNavigator);

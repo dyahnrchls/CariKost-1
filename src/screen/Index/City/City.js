@@ -5,9 +5,6 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { Appbar } from 'react-native-paper'
 
 
-
-
-
 export default class City extends Component {
 
     constructor(props) {

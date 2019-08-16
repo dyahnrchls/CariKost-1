@@ -10,7 +10,3 @@ export default class Favorit extends Component {
         )
     }
 }
-
-Favorit.navigationOptions = {
-    tabBarLabel: 'Favorit'
-};
